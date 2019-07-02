@@ -1,7 +1,7 @@
 import React from "react";
 import { Form, FormGroup, Label, Input, Button } from 'reactstrap'
 
-const EmailForm = () => {
+const EmailForm = ({ email, handleInputChange, handleCompleteOrder}) => {
   return (
     <div>
       <Form>
@@ -12,9 +12,10 @@ const EmailForm = () => {
             name="email"
             id="email"
             placeholder="email@provider.com"
+            onChange={handleInputChange}
           />
         </FormGroup>
-        <Button>Complete Order</Button>
+        <Button onClick={handleCompleteOrder}> Complete Order</Button>
       </Form>
     </div>
   );

@@ -20,5 +20,11 @@ export default {
     return service.get('/products')
       .then(res => res.data)
       .catch(errHandler)
+  },
+
+  postEmail(email){
+    return service.post('/user', email)
+      .then(res => res)
+      .catch(errHandler)
   }
 }

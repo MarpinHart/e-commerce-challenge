@@ -10,6 +10,7 @@ class ProductList extends Component {
       allItems: [],
       cartItems: [],
       email: "",
+      user: {},
       completed: false,
       submitted: false,
     };
@@ -27,8 +28,16 @@ class ProductList extends Component {
       completed: true,
     })
   } 
+  handleInputChange(event){
+    this.setState({
+      [event.target.name]: event.target.value
+    })
+  }
   handleCompleteOrder(event, products){
     event.preventDefault()
+    const { email } = this.state
+    api.postEmail({ email })
+      .then(res => res.data)
   }
   render() {
     return (
@@ -37,8 +46,10 @@ class ProductList extends Component {
           <ShoppingCart 
             cart={this.state.cartItems}
             completed={this.state.completed}
+            email={this.state.email}
             handleCompleteCart={e=>this.handleCompleteCart(e)}
             handleCompleteOrder={e=>this.handleCompleteOrder(e)}
+            handleInputChange={e=>this.handleInputChange(e)}
           />}
         {this.state.allItems.map(product => (
             <ProductCard

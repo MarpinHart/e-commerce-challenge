@@ -2,18 +2,18 @@ import React from "react";
 import { Button } from "reactstrap";
 import EmailForm from './EmailForm'
 
-const ShoppingCart = ({ cart, handleCompleteCart, completed, handleCompleteOrder }) => {
+const ShoppingCart = ({ cart, email, completed, handleCompleteCart, handleCompleteOrder, handleInputChange }) => {
   return (
-    <div>
-      
+    <div>  
       {cart.map(shoppedItem => (
         <h1>{shoppedItem.title}</h1>
       ))}
       <Button onClick={handleCompleteCart}> Confirm </Button>
-      
       {completed && (
         <EmailForm 
-          handleCoompleteOrder={handleCompleteOrder}
+          email={email}
+          handleCompleteOrder={handleCompleteOrder}
+          handleInputChange={handleInputChange}
         />
       )}
     </div>
