@@ -17,8 +17,8 @@ export default {
   service: service, 
 
   getProductsList(){
-    return service.get('/')
-      .then(res => console.log(res.data))
+    return service.get('/products')
+      .then(res => res.data)
       .catch(errHandler)
   }
 }

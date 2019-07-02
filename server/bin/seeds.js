@@ -15,7 +15,7 @@ function createSeeds() {
   let temp = []
   for(i = 0; i < 100; i++){
     temp.push({
-      price: `${10+i}€`,
+      price: `${Math.floor(Math.random() * (10.00 - 1.00 + 1.00)) + 1.00}€`,
       imageUrl: 'http://www.sparkawards.com/wp-content/uploads/2011/05/Product_Lg_Type.jpg',
       title: `Product ${i}`,
       description: 'What an amazing product',
