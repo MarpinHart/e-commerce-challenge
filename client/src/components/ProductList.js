@@ -13,6 +13,7 @@ class ProductList extends Component {
       cartItems: [],
       email: "",
       user: {},
+      search: "",
       completed: false,
       submitted: false,
     };
@@ -40,10 +41,9 @@ class ProductList extends Component {
       [event.target.name]: event.target.value
     })
   }
-
-  handleFilterSearch(event){
+  handleSearchInput(searchValue){
     this.setState({
-
+      search: searchValue
     })
   }
 
@@ -60,6 +60,7 @@ class ProductList extends Component {
     return re.test(String(this.state.email).toLowerCase());
   }
   render() {
+    let lowerSearch = this.state.search.toLowerCase()
     return (
       <div className="ProductList">
          {this.state.cartItems.length > 0 && 
@@ -75,9 +76,12 @@ class ProductList extends Component {
         <Input
             name="filter"
             placeholder="Filter the seach"
-            onChange={e=>this.handleInputChange(e)}
+            value={this.state.search}
+            onChange={e => this.handleSearchInput(e.target.value)}
           />  
-        {this.state.allItems.map(product => (
+        {this.state.allItems
+          .filter(product => product.title.toLowerCase().includes(lowerSearch))
+          .map(product => (
             <ProductCard
               id={product._id}
               title={product.title}
