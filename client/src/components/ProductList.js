@@ -2,11 +2,13 @@ import React, { Component } from "react";
 import api from "../api";
 import ProductCard from "./ProductCard";
 import ShoppingCart from './ShoppingCart'
+import { Input } from 'reactstrap'
 
 class ProductList extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      filter: "",
       allItems: [],
       cartItems: [],
       email: "",
@@ -38,6 +40,13 @@ class ProductList extends Component {
       [event.target.name]: event.target.value
     })
   }
+
+  handleFilterSearch(event){
+    this.setState({
+
+    })
+  }
+
   handleCompleteOrder(event, products){
     event.preventDefault()
     const _user = this.state.user._id
@@ -63,6 +72,11 @@ class ProductList extends Component {
             handleInputChange={e=>this.handleInputChange(e)}
             isEmailCorrect={this.isEmailCorrect()}
           />}
+        <Input
+            name="filter"
+            placeholder="Filter the seach"
+            onChange={e=>this.handleInputChange(e)}
+          />  
         {this.state.allItems.map(product => (
             <ProductCard
               id={product._id}

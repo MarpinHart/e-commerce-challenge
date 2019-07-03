@@ -16,7 +16,7 @@ const EmailForm = ({ email, handleInputChange, handleCompleteCart, isEmailCorrec
           <Input
             type="email"
             name="email"
-            id="email"
+            value={email}
             valid={isEmailCorrect}
             invalid={email.length > 0 && !isEmailCorrect}
             placeholder="Insert Email"
