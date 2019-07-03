@@ -41,8 +41,9 @@ class ProductList extends Component {
   handleCompleteOrder(event, products){
     event.preventDefault()
     const _user = this.state.user._id
-    const _products = this.state.
-    console.log(user)
+    const _products = this.state.cartItems.map(e=> e._id)
+    api.postOrder({_user, _products})
+      .then(res => console.log(res))
     
   }
   isEmailCorrect() {
