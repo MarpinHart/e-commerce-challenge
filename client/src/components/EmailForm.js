@@ -1,21 +1,33 @@
 import React from "react";
-import { Form, FormGroup, Label, Input, Button } from 'reactstrap'
+import {
+  Form,
+  InputGroup,
+  InputGroupAddon,
+  Input,
+  Button,
+  FormFeedback
+} from "reactstrap";
 
-const EmailForm = ({ email, handleInputChange, handleCompleteOrder}) => {
+const EmailForm = ({ email, handleInputChange, handleCompleteCart, isEmailCorrect }) => {
   return (
     <div>
       <Form>
-        <FormGroup>
-          <Label for="exampleEmail">Please insert Email</Label>
+        <InputGroup>
           <Input
             type="email"
             name="email"
             id="email"
-            placeholder="email@provider.com"
+            valid={isEmailCorrect}
+            invalid={email.length > 0 && !isEmailCorrect}
+            placeholder="Insert Email"
             onChange={handleInputChange}
           />
-        </FormGroup>
-        <Button onClick={handleCompleteOrder}> Complete Order</Button>
+          <FormFeedback> This is not a valid email </FormFeedback>
+          <InputGroupAddon addonType="prepend">
+            <Button onClick={handleCompleteCart}>Confirm</Button>
+          </InputGroupAddon>
+          <FormFeedback valid />
+        </InputGroup>
       </Form>
     </div>
   );

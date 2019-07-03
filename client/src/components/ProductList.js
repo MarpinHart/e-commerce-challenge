@@ -24,9 +24,14 @@ class ProductList extends Component {
   }
   handleCompleteCart(event){
     event.preventDefault()
-    this.setState({
-      completed: true,
-    })
+    const { email } = this.state
+    api.postEmail({ email })
+      .then(res => {
+        this.setState({
+          completed: true,
+          user: res.data
+        })
+      })
   } 
   handleInputChange(event){
     this.setState({
@@ -35,9 +40,14 @@ class ProductList extends Component {
   }
   handleCompleteOrder(event, products){
     event.preventDefault()
-    const { email } = this.state
-    api.postEmail({ email })
-      .then(res => res.data)
+    const _user = this.state.user._id
+    const _products = this.state.
+    console.log(user)
+    
+  }
+  isEmailCorrect() {
+    var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(String(this.state.email).toLowerCase());
   }
   render() {
     return (
@@ -50,6 +60,7 @@ class ProductList extends Component {
             handleCompleteCart={e=>this.handleCompleteCart(e)}
             handleCompleteOrder={e=>this.handleCompleteOrder(e)}
             handleInputChange={e=>this.handleInputChange(e)}
+            isEmailCorrect={this.isEmailCorrect()}
           />}
         {this.state.allItems.map(product => (
             <ProductCard

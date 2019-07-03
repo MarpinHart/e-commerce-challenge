@@ -26,5 +26,11 @@ export default {
     return service.post('/user', email)
       .then(res => res)
       .catch(errHandler)
+  },
+
+  postOrder(order){
+    return service.post('/orders', order)
+      .then(res => res)
+      .catch(errHandler)
   }
 }
