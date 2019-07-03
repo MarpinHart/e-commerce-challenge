@@ -25,7 +25,6 @@ class ProductList extends Component {
     this.setState(prevState => ({
       cartItems: [...prevState.cartItems, product]
     }));
-    console.log(this.state.cartItems);
   }
   handleCompleteCart(event) {
     event.preventDefault();

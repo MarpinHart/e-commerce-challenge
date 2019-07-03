@@ -17,7 +17,7 @@ const ProductCard = ({
           <h5 className="">{title}</h5>
           <p className="">{description}</p>
           <Button className="button" onClick={handleAddCart}>
-            Button
+            Add Cart
           </Button>
         </div>
         <h2 className="price-card">{price}</h2>
