@@ -61,9 +61,9 @@ class ProductList extends Component {
   }
   render() {
     let lowerSearch = this.state.search.toLowerCase()
+    this.state.cartItems.length > 0 && this.state.cartItems.reduce((accumulator, reducer) => console.log(reducer.price + accumulator.price, "as console.log"))
     return (
-      <div className="ProductList">
-         {this.state.cartItems.length > 0 && 
+      <div className="ProductList"> 
           <ShoppingCart 
             cart={this.state.cartItems}
             completed={this.state.completed}
@@ -72,7 +72,8 @@ class ProductList extends Component {
             handleCompleteOrder={e=>this.handleCompleteOrder(e)}
             handleInputChange={e=>this.handleInputChange(e)}
             isEmailCorrect={this.isEmailCorrect()}
-          />}
+          />
+        <div className="right-page">
         <Input
             name="filter"
             placeholder="Filter the seach"
@@ -91,6 +92,7 @@ class ProductList extends Component {
               handleAddCart={e=>this.handleAddCart(e, product)}
             />
         ))}
+        </div>
       </div>
     );
   }

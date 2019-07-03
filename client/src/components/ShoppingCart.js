@@ -4,7 +4,7 @@ import EmailForm from './EmailForm'
 
 const ShoppingCart = ({ cart, email, completed, handleCompleteCart, handleCompleteOrder, handleInputChange, isEmailCorrect }) => {
   return (
-    <div>  
+    <div className="ShoppingCart">  
       {cart.map(shoppedItem => (
         <h1>{shoppedItem.title}</h1>
       ))}
