@@ -1,0 +1,76 @@
+body{
+  margin: 5%;
+  padding: 2%
+}
+
+.ProductList{
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: flex-start;
+}
+.ProductCard {
+  margin: 0.2em;
+}
+.ShoppingCart{
+	width: 20%;
+  height: 80vh;
+  padding-right: 1%;
+}
+
+.CartItem{
+  display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+  justify-content: space-between;
+  margin: 0.5% 0;
+}
+
+.right-page{
+  width: 80%;
+}
+
+.right-page-scroll{
+  margin: 1% auto;
+  height: 80vh;
+  overflow: scroll;
+}
+
+.card{
+	flex-direction: row !important; 
+	max-width: 70vw !important;
+}
+
+.product-image{
+	max-width: 10vw;
+	object-fit: contain;
+	margin: 1em;
+}
+.title-description-card{
+	width: 40em;
+	display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	justify-content: center;
+	align-items: stretch;
+	align-content: center;
+}
+.button{
+	width: 7em;
+	margin: 0 auto;
+}
+.price-card{
+	margin: auto 0;
+}
+
+.complete-button{
+  margin: 5% auto;
+}
+
+.shopping-list{
+  height: 50vh;
+  overflow: scroll;
+}
+.form-control{
+  max-width: 70vw !important;
+}

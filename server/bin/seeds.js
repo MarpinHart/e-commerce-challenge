@@ -15,7 +15,7 @@ function createSeeds() {
   let temp = []
   for(i = 0; i < 100; i++){
     temp.push({
-      price: `${Math.floor(Math.random() * (10.00 - 1.00 + 1.00)) + 1.00}€`,
+      price: `${(Math.random()*100 + 1).toFixed(2).toString()} €`,
       imageUrl: 'http://www.sparkawards.com/wp-content/uploads/2011/05/Product_Lg_Type.jpg',
       title: `Product ${i}`,
       description: 'What an amazing product',
@@ -31,7 +31,7 @@ Product.deleteMany()
     return Product.create(products)
   })
   .then(productsCreated => {
-    console.log(`${productsCreated.length} users created with the following id:`)
+    console.log(`${productsCreated.length} products created with the following id:`)
     console.log(productsCreated.map(u => u._id))
   })
   .then(() => {
