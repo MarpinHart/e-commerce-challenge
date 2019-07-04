@@ -5,7 +5,16 @@ I have built this application to train in developing Full Stack applications and
 
 Users can navigate through a list of seeded products and complete an order after validating the e-mail
 ## Getting Started
+- This app requires you to install MongoDb and Node
 - Clone or fork this repository
+- You should have a `server/.env` file, with for example the following values:
+```
+PORT=5000
+SESSION_SECRET=anyValue
+MONGODB_URI=......
+
+```
+## Command lines
 - In the command line for the `client` folder
 
 ```sh
@@ -18,11 +27,12 @@ $ npm install
 $ npm init
 $ npm install
 ```
-- create a .env file with the following properties:
-PORT = "num" // for local development
-MONGODB_URI = // URI for connection to a MongoDB database
+- Now we have to seed our Database, in the `server`folder
+```sh
+$ node bin/seeds.js
+```
 
-use the following command lines to run the server locally:
+- Use the following command lines to run the server locally:
 ```sh
 $ npm run dev
 ```
