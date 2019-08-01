@@ -23,7 +23,7 @@ class ProductList extends Component {
   handleAddCart(e, product) {
     e.preventDefault();
     
-    if(!this.state.completed)
+    if(!this.state.successful)
     this.setState(prevState => ({
       cartItems: [...prevState.cartItems, product]
     }));
@@ -53,7 +53,7 @@ class ProductList extends Component {
     const _user = this.state.user._id;
     const _products = this.state.cartItems.map(e => e._id);
     api.postOrder({ _user, _products }).then(res => console.log(res));
-    this.setState({ successful: true, completed: true })
+    this.setState({ successful: true})
   }
   deleteItemFromCart(event, index){
     console.log(index)
@@ -87,8 +87,9 @@ class ProductList extends Component {
             value={this.state.search}
             onChange={e => this.handleSearchInput(e.target.value)}
           />
+          
           <div className="right-page-scroll">
-            {this.state.allItems
+            {!this.state.successful && this.state.allItems
               .filter(product =>
                 product.title.toLowerCase().includes(lowerSearch)
               )
@@ -102,6 +103,7 @@ class ProductList extends Component {
                   handleAddCart={e => this.handleAddCart(e, product)}
                 />
               ))}
+              {this.state.successful && <div><h1>COMPLETED</h1></div>}
           </div>
         </div>
       </div>
