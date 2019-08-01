@@ -22,6 +22,8 @@ class ProductList extends Component {
   }
   handleAddCart(e, product) {
     e.preventDefault();
+    
+    if(!this.state.completed)
     this.setState(prevState => ({
       cartItems: [...prevState.cartItems, product]
     }));
@@ -51,7 +53,7 @@ class ProductList extends Component {
     const _user = this.state.user._id;
     const _products = this.state.cartItems.map(e => e._id);
     api.postOrder({ _user, _products }).then(res => console.log(res));
-    this.setState({ successful: true })
+    this.setState({ successful: true, completed: true })
   }
   deleteItemFromCart(event, index){
     console.log(index)
